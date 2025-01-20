@@ -26,9 +26,17 @@ public class BaseInitData {
                 return ;
             }
 
+            System.out.println("==== 1번 데이터 생성 ====");
             postService.write("title1", "body1");
+            System.out.println("==== 1번 데이터 생성 완료 ====");
+
+            System.out.println("==== 2번 데이터 생성 ====");
             postService.write("title2", "body2");
+            System.out.println("==== 2번 데이터 생성 완료 ====");
+
+            System.out.println("==== 3번 데이터 생성 완료 ====");
             postService.write("title3", "body3");
+            System.out.println("==== 3번 데이터 생성 완료 ====");
 
         };
     }
