@@ -1,16 +1,19 @@
 package com.example.jpa.domain.post.post.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Post {
-
     @Id // PRIMARY KEY
     @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     private Long id; // long -> null X, Long -> null O
@@ -20,4 +23,5 @@ public class Post {
     private String title;
     @Column(columnDefinition = "TEXT")
     private String body;
+
 }
