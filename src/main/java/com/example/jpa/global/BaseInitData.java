@@ -70,13 +70,29 @@ public class BaseInitData {
                 postService.delete(p1);
                 System.out.println("====== p1 삭제 완료 ======");
 
-
                 System.out.println("====== p2 삭제 ======");
                 postService.delete(p2);
                 System.out.println("====== p2 삭제 완료 ======");
 
-//                postService.deleteById(1L);
-//                postService.deleteById(2L);
+            }
+        };
+    }
+
+    @Bean
+    @Order(4)
+    public ApplicationRunner applicationRunner4() {
+        return new ApplicationRunner() {
+            @Override
+            @Transactional
+            public void run(ApplicationArguments args) throws Exception {
+
+                Post post = postService.findById(3L).get();
+                System.out.println(post.getId() + "번 포스트를 가져왔습니다.");
+                System.out.println("==========================================");
+
+                Post post2 = postService.findById(3L).get();
+                System.out.println(post2.getId() + "번 포스트를 가져왔습니다.");
+
 
             }
         };
