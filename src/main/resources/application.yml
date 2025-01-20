@@ -15,7 +15,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update # 재시작하면 테이블 지우고 다시 만듦. update 유지.
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
         dialect: org.hibernate.dialect.MySQLDialect
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.hibernate.orm.jdbc.extract: TRACE
+    org.springframework.transaction.interceptor: TRACE
