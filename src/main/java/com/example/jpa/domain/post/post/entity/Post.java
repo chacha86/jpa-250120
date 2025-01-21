@@ -41,4 +41,8 @@ public class Post {
     @Builder.Default// mappedBy를 사용하지 않은 쪽이 주인
     private List<Comment> comments = new ArrayList<>();
 
+    public void addComment(Comment c1) {
+        comments.add(c1);
+        c1.setPost(this);
+    }
 }

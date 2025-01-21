@@ -47,9 +47,11 @@ public class BaseInitData {
                 .body("comment1")
                 .build();
 
-        p1.getComments().add(c1); // 관계의 주인이 DB 반영을 한다.
+        c1 = commentService.save(c1);
+//        p1.getComments().add(c1); // 관계의 주인이 DB 반영을 한다.
+//        commentService.write(p1, "comment1");
 
-        commentService.write(p1, "comment1");
+        p1.addComment(c1);
 
     }
 }
