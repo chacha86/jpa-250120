@@ -29,9 +29,13 @@ public class BaseInitData {
                 return ;
             }
 
-            postService.write("title1", "body1");
+            Post p1 = postService.write("title1", "body1");
             postService.write("title2", "body2");
             postService.write("title3", "body3");
+
+            commentService.write(p1, "comment1");
+            commentService.write(p1, "comment2");
+            commentService.write(p1, "comment3");
 
         };
     }
@@ -43,23 +47,15 @@ public class BaseInitData {
             @Override
             @Transactional
             public void run(ApplicationArguments args) throws Exception {
-                Post post = postService.findById(1L).get();
 
-                if(commentService.count() > 0) {
-                    return;
-                }
+                Comment c1 = commentService.findById(1L).get();
+                // SELECT * FROM comment WHERE id = 1;
 
-                Comment c5 = Comment.builder()
-                        .body("comment5")
-                        .build();
-                // 2번 방식 -> 훨씬 객체지향적(자바스럽다)
-                post.addComment(c5);// comment1 댓글을 세팅
+                Post post = c1.getPost(); // EAGER -> 이미 모든 post정보를 위에서 join으로 가져옴.
+                                          // LAZY -> post -> 비어 있다.
+                System.out.println(post.getId()); // post가 null은 아니고. id 하나만 채워져 있다.
 
-//                long parentId = c5.getPostId(); // 부모글 정보를 조회
-//                Post parent = postService.findById(parentId).get();
-//
-//                System.out.println(parent.getTitle());
-
+                System.out.println(post.getTitle());
 
 
             }
