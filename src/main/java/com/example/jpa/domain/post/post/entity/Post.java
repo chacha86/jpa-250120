@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,7 +37,8 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
-    @OneToMany(mappedBy = "post") // mappedBy를 사용하지 않은 쪽이 주인
-    private List<Comment> comment;
+    @OneToMany(mappedBy = "post")
+    @Builder.Default// mappedBy를 사용하지 않은 쪽이 주인
+    private List<Comment> comments = new ArrayList<>();
 
 }
