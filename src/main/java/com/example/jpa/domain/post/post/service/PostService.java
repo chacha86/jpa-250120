@@ -81,6 +81,10 @@ public class PostService {
         return postRepository.findByTitleLike(keyword);
     }
 
+    public Page<Post> findByTitleLike(String keyword, Pageable pageable) {
+        return postRepository.findByTitleLike(keyword, pageable);
+    }
+
     public List<Post> findByOrderByIdDesc() {
         return postRepository.findByOrderByIdDesc();
     }
