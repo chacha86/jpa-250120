@@ -38,7 +38,7 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true) // EAGER, LAZY
     @Builder.Default// mappedBy를 사용하지 않은 쪽이 주인
     private List<Comment> comments = new ArrayList<>();
 
